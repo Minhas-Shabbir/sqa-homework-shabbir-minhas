@@ -1,0 +1,16 @@
+{
+  "name": "sqa-homework-shabbir-minhas",
+  "version": "1.0.0",
+  "description": "QA take-home challenge: automated suite for ask.permission.ai pre-login agent",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report artifacts/report",
+    "eval": "promptfoo eval -c evals/promptfoo.config.yaml"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.40.1",
+    "promptfoo": "^0.100.0"
+  }
+}
