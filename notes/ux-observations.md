@@ -12,3 +12,9 @@ Raw observations as I found them. Will be distilled into artifacts/ux-review.md
   guidance on what to ask. This is a real onboarding gap, not a styling nit.
 - Cookie-consent banner overlays the bottom of the chat panel (covers part of
   the pills grid and is adjacent to the ASK input) on every fresh session.
+- Browser back button exits the agent page entirely rather than stepping back
+  within the conversation - the app doesn't push any history/route state per
+  message, so "back" feels like leaving the product, not undoing a turn.
+- Refresh reliably returns to the pills/landing state (conversation isn't
+  persisted) - confirms the reload-based wait strategy in Test 1 models real
+  behavior rather than working around a one-off fluke.
