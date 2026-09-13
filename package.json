@@ -11,6 +11,10 @@
   },
   "devDependencies": {
     "@playwright/test": "1.40.1",
-    "promptfoo": "^0.100.0"
+    "promptfoo": "latest"
+  },
+  "overrides": {
+    "playwright-core": "1.40.1",
+    "playwright": "1.40.1"
   }
 }

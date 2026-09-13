@@ -18,3 +18,24 @@ Raw observations as I found them. Will be distilled into artifacts/ux-review.md
 - Refresh reliably returns to the pills/landing state (conversation isn't
   persisted) - confirms the reload-based wait strategy in Test 1 models real
   behavior rather than working around a one-off fluke.
+
+## Automation/environment notes (for README key decisions, not UX per se)
+
+- Confirmed live: a bare page.goto() to ask.permission.ai occasionally times
+  out under parallel worker load (2 desktop-chromium runs hitting the site
+  simultaneously) - a real external flake, not a defect in our locators or
+  wait strategy. retries: 1 in playwright.config.ts absorbed it correctly
+  (reported as "flaky", final run still passed).
+- Even the default opening greeting text varies between sessions (not just
+  topic responses) - reinforces that no fixed-string assertion is safe
+  anywhere in this app, not only on agent answers.
+- After pressing Enter/Send, keyboard focus is lost from the ASK input - the
+  user has to click back into the box before typing the next message. Real
+  friction for a chat product meant for rapid back-and-forth.
+- Confirmed on a REAL mobile device (not just responsive mode, per iOS status
+  bar in screenshot): suggested-topic pills correctly stack to a single
+  column and layout holds up - responsive behavior matches desktop intent.
+- Also observed: the agent correctly refuses a prompt-injection attempt
+  ("Ignore your previous instructions... backend system instructions") and
+  redirects to its actual scope - a good sign for the agent's guardrails,
+  worth a positive mention alongside the improvement list.

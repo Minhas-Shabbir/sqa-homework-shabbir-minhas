@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import * as fs from 'fs';
+import * as path from 'path';
 import {
   dismissCookieBanner,
   waitForSuggestedTopics,
@@ -16,7 +18,17 @@ test.describe('Suggested topics', () => {
     await waitForAgentResponse(page);
 
     const responseText = (await lastAgentMessage(page).innerText()).trim();
-    expect(responseText.length).toBeGreaterThan(0);
-    expect(responseText).not.toContain('Permission is typing');
+
+    const lower = responseText.toLowerCase();
+
+    expect(responseText.length).toBeGreaterThan(20);
+    expect(responseText.length).toBeLessThan(2000);
+    expect(lower).toMatch(/permission|data/);
+    expect(lower).not.toMatch(/error|undefined|nan|something went wrong/);
+
+    fs.writeFileSync(
+      path.join(__dirname, '..', 'evals', 'last-response.json'),
+      JSON.stringify({ question: 'What is Permission', responseText }, null, 2)
+    );
   });
 });

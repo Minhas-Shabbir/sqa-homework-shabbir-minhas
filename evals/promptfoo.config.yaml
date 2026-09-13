@@ -1,0 +1,21 @@
+description: "LLM-graded check on the live 'What is Permission' agent response captured by Playwright (see tests/suggested-topic.spec.ts)"
+
+prompts:
+  - "What is Permission"
+
+providers:
+  - file://staticProvider.js
+
+defaultTest:
+  options:
+    provider: google:gemini-2.5-flash
+
+tests:
+  - assert:
+      - type: llm-rubric
+        value: >
+          The response explains that Permission is a platform/agent related to
+          personal data, giving the user control over their data and letting
+          them earn rewards for sharing it - in language a new user could
+          understand. It is NOT empty, evasive, an error message, or
+          nonsensical filler text.

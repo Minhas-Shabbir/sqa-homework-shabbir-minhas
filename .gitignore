@@ -4,3 +4,10 @@ playwright-report/
 .env
 *.log
 .DS_Store
+evals/.venv/
+__pycache__/
+*.pyc
+.deepeval-cache.json
+.deepeval_telemtry.txt
+evals/.deepeval_telemtry.txt
+evals/last-response.json
