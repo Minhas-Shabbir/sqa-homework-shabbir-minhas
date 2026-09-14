@@ -6,7 +6,7 @@ test.describe('Free-text ASK input', () => {
     await page.goto('/');
     await dismissCookieBanner(page);
 
-    const askInput = page.getByPlaceholder('ASK anything...');
+    const askInput = page.getByTestId('agent-chat-input');
     await askInput.fill('How can I start earning with Permission?');
     await askInput.press('Enter');
 

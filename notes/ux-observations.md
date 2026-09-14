@@ -39,3 +39,7 @@ Raw observations as I found them. Will be distilled into artifacts/ux-review.md
   ("Ignore your previous instructions... backend system instructions") and
   redirects to its actual scope - a good sign for the agent's guardrails,
   worth a positive mention alongside the improvement list.
+- Positive finding: for questions outside its scope, the agent gives a
+  clean, honest redirect ("I'm not sure about that, but I can explain how
+  Permission.ai works...") rather than hallucinating or erroring - good
+  graceful-degradation behavior worth a positive mention.
